@@ -1,0 +1,345 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>InputKing online IME - type your language on any computer</title>
+<script type="text/javascript" src="jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<script type="text/javascript" src="inputking.js"></script>
+
+<link rel="stylesheet" type="text/css" href="main.css" />
+
+<style type="text/css">
+<!--
+.inputking {left:0px; width:200px; height:20px; position:absolute; top:0px; font-size:16px; text-align:left;color:#FF3300;}
+.option {width:40px; height:20px; position:absolute; top:0px; font-size:16px; text-align:center; border:thin solid #000000;}
+.page {width:60px; height:20px; position:absolute; top:180px; font-size: 16px; border:thin solid #EEEEEE; text-align:center;}
+.show_word {
+	width:160px;
+	height:20px;
+	position:absolute;
+	color: #0000FF;
+	text-align: left;
+	font-size: 16px;
+	border:thin solid #EEEEEE;
+}
+#word_list {
+	width:150px;
+	position:absolute;
+	left:10px;
+	top:100px;
+	font-size: 16px;
+	background-color: #EEEEEE;
+	z-index: 2;
+	border-style: solid;
+	border-width: 1px; display:none;
+}
+.word {
+	text-align:left;
+	cursor: pointer;
+	border:none;
+	background-color: #EEEEEE;
+}
+.list_nav {
+	cursor: pointer;
+	padding: 0 20px 0 20px;
+	background-color: #bbbbbb;
+	border:none;
+}
+.list_nav:hover {
+	background-color: #8888ff;
+}
+.show_input {width:199px; height:19px; position:absolute; top:180px; left:1px; color:#0000FF; font-size:16px; border:thin solid #000000;}
+.popup {
+	position:absolute;
+	left:10px;
+	top:10px;
+	width:300px;
+	height:180px;
+	text-align:center;
+	font-size: 16px;
+	background-color: #EEEEEE;
+	z-index: 2;
+}
+
+.style1 {color: #000000}
+.highlight, .word:hover {background-color: blue; color: white;}
+.word_div {
+	display:none;
+	padding-left:5px;
+}
+#中, #日, #英 {
+	display:none;
+}
+.lang_label {
+	padding: 3px 5px 3px 5px;
+	font-size:18px;
+}
+
+label, input[type="radio"]  {
+	cursor: pointer;
+}
+
+label:hover {
+	background-color:#0000ff;
+}
+
+select {
+	font-size: 12pt;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:16px;
+}
+.character {
+	font-size: 19pt;
+	width: 35px;
+	margin-top:5px;
+    background-color:#f5f5f5;
+    border:1px solid #101010;
+    border-top:1px solid #eee;
+    border-left:1px solid #eee;
+    cursor:pointer;
+}
+.character:hover{
+    background-color:#dff4ff;
+    border:1px solid #c2e1ef;
+}
+
+#page_nav_div {
+	text-align:right;
+	margin-top:10px;
+}
+
+#search, #search_code, #print, .highlight_copy, #previous_page, #next_page {
+	padding:1px;
+    background-color:#bbbbbb;
+    border:1px solid #101010;
+    cursor:pointer;
+}
+#search:hover, #search_code:hover, #print:hover, .highlight_copy:hover, #previous_page:hover, #next_page:hover {
+    background-color:#8888ff;
+}
+.message {
+	padding:3px;
+	border:1px solid #5555ff;
+	background-color:#eeeeff;
+	margin-left: 80px;
+	display: none;
+	color:#FF4400
+}
+.keyboard_table {
+	display: none;
+}
+-->
+</style>
+</head>
+
+
+<body style="margin:0;">
+<div style="text-align: center; font-size:50px; color:#0000ff; padding-top:200px; position:absolute; left: 0px; top: 0px; width: 100%; height: 600px; background-color:#F6F6F6;" id="wait_div" >Please wait<span style="font-size:30px; text-decoration: blink;">．．．</span></div>
+<div style="width: 900px; margin-right: auto;margin-left: auto;background:#FFFFFF;">
+
+<table border="0" align="center" cellpadding="0" cellspacing="0" style="width: 100%;">
+  <tr>
+    <td width="55%" nowrap="nowrap" id="logo">
+			<span id="big_inputking">InputKing</span><br />
+    <span id="input">Online Input System</span><br />
+&copy;2019 InputKing.com</td>
+    <td width="45%" align="right" valign="bottom" nowrap="nowrap" style="padding:0 5px 5px 0;">
+
+
+<style type="text/css">
+@import url(//www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-right" style="background-color:#FFFFFF;color:#000000">
+  <div class="cse-branding-form">
+    <form action="https://www.google.com/cse" id="cse-search-box" target="_blank">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-0458962108690213:jampja-1b5g" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="28" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="https://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+
+</td>
+  </tr>
+   <tr>
+     <td colspan="2" style="height: 2px; background-color: #ccccff;"></td>
+</tr>
+   <tr>
+     <td colspan="2" valign="top" style="padding: 8px 0 8px 5px;">
+<select id="select_dict">
+  <option value="dict_cn">Chinese-English / English-Chinese Dictionary</option>
+  <option value="chinese_dict">Chinese Dictionary</option></select>
+<input type="text" size="15" id="search_str"/>&nbsp;<button type="button" id="search">Search</button>
+</td>
+</tr>
+   <tr>
+     <td colspan="2" style="height: 2px; background-color: #ccccff;"></td>
+</tr>
+   <tr>
+     <td style="padding: 8px 0 3px 0;">
+<label class="lang_label" ><input type="radio" name="lang" value="韩" class="lang" />&nbsp;Korean (한국어)</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<label class="lang_label" ><input type="radio" name="lang" value="英" class="lang" />&nbsp;English</label></td>
+
+<td style="text-align:right;"><select class="symbols">
+<option selected>Symbols</option>
+<option value="0">Punctuation</option>
+<option value="1">Math symbol</option>
+<option value="2">Serial number</option>
+<option value="3">Special symbol</option>
+<option value="4">Table symbol</option>
+<option value="5">Greek</option>
+<option value="6">Russian</option>
+<option value="7">Pinyin letter</option>
+<option value="8">Phonetic</option>
+<option value="9">Hiragana</option>
+<option value="10">Katakana</option>
+</select>
+</td>
+</tr>
+   <tr>
+     <td colspan="2" valign="middle"  id="lang_option" style="padding-left: 5px; background-color: #e5e5e5; height: 30px;">
+<span id="英">
+  <label><input name="full_half" type="radio" class="focus_after_click" value="半" checked="checked" />&nbsp;Half Shape</label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<label><input type="radio" name="full_half" class="focus_after_click" value="全" />&nbsp;Full Shape</label>
+  </span>
+   
+</td>
+   </tr>
+   <tr>
+     <td colspan="2" style="height: 5px;"></td>
+</tr>
+   <tr>
+     <td colspan="2" style="height: 2px; background-color: #ccccff;"></td>
+</tr>
+
+   <tr>
+     <td colspan="2"  style="padding: 5px 0 5px 5px;">
+<button id="print" type="button">Print</button>
+<button class="highlight_copy" type="button" value="" name="highlight" style="display:none; margin-left:15px;">Select All</button>
+<button class="highlight_copy" type="button" value="" name="copy" style="display:none; margin-left:15px;">Copy All</button>
+<span class="message" id="searching" style="color:#0000ff">Searching ．．．</span>
+<span class="message" id="usable_key" style="color:#0000ff">Key is faster than mouse! Usable Keys: Number (0-9), Space, Enter, PageUp, PageDown</span>
+<span class="message" id="not_found">Not found!</span>
+<span class="message" id="key_error">Wrong key!</span>
+<span class="message" id="not_open">Japanese input function is not available in this time frame!</span>
+<span class="message" id="need_login">You need to re-sign in to continue typing Japanese!</span>
+   
+</td>
+</tr> 
+   <tr>
+     <td colspan="2"><textarea name="textarea" id="edit_area" style="width:100%; height:150px; font-family:Courier New, Courier, monospace; padding:3px 0 3px 0"></textarea></td>
+</tr> 
+<tr>
+<td id="show_area" colspan="2" style="padding:0 5px 0 5px;"><table style="margin:15px auto 0;text-align:left;">
+<tr>
+<td>
+<p style="text-align:center;"><span style="font-weight:bold;font-size:20px;">Instant News</span><br />
+Provided by <a href="https://newsbrowse.com" target="_blank"><strong>NewsBrowse.com</strong></a></p>
+<ul>
+<li>How a shadow banking crisis sent India's autos sector into a tailspin<br />
+<font size="-1"><font color="#6f6f6f">Reuters -</font> <span style="color:#5555ff;">
+19 minutes ago</span></font></li>
+<li>West Ham must not miss out on Europe, says Rice<br />
+<font size="-1"><font color="#6f6f6f">BBC -</font> <span style="color:#5555ff;">
+52 minutes ago</span></font></li>
+<li>Japan, U.S. target broad bilateral trade deal by September: Nikkei<br />
+<font size="-1"><font color="#6f6f6f">Reuters -</font> <span style="color:#5555ff;">
+1 hour ago</span></font></li>
+<li>Chocolate Chip Cookie Day and the accidental origin of this American staple<br />
+<font size="-1"><font color="#6f6f6f">CNN -</font> <span style="color:#5555ff;">
+1 hour ago</span></font></li>
+<li>Saeed Malekpour: Web designer escapes life sentence in Iran<br />
+<font size="-1"><font color="#6f6f6f">BBC -</font> <span style="color:#5555ff;">
+1 hour ago</span></font></li>
+</ul>
+</td>
+</tr>
+</table>
+</td>
+</tr> 
+</table>
+
+<div id="word_list" style="">
+<div class="word_div"><span>1. </span><button type="button" class="word"></button></div>
+<div class="word_div"><span>2. </span><button type="button" class="word"></button></div>
+<div class="word_div"><span>3. </span><button type="button" class="word"></button></div>
+<div class="word_div"><span>4. </span><button type="button" class="word"></button></div>
+<div class="word_div"><span>5. </span><button type="button" class="word"></button></div>
+<div class="word_div"><span>6. </span><button type="button" class="word"></button></div>
+<div class="word_div"><span>7. </span><button type="button" class="word"></button></div>
+<div class="word_div"><span>8. </span><button type="button" class="word"></button></div>
+<div class="word_div"><span>9. </span><button type="button" class="word"></button></div>
+<div class="word_div"><span>0. </span><button type="button" class="word"></button></div>
+<div><button type="button" class="list_nav" id="last_list" style="float:left">&lt;&nbsp;</button><button type="button" class="list_nav" id="next_list" style="float:right">&nbsp;&gt;</button></div>
+</div>
+
+<form id="dict_cn" method="get" target="popup_win" action="https://dict.cn/en/search" accept-charset="gb2312">
+<input name="q" type="hidden" id="dictcn_char">
+<input name="simple" type="hidden" value="1">
+</form>
+
+</div>
+
+<div style="margin-top:20px;">
+<table id="俄_keyboard" style="margin:0 auto;text-align:center;font-weight:bold;" class="keyboard_table">
+<tr>
+<td>
+
+<div>
+<div>Q <span class="yun">ㅃ</span><br /> &nbsp; &nbsp;<span class="yun">ㅂ</span></div>
+<div>W<span class="yun">ㅉ</span><br /> &nbsp; &nbsp;<span class="yun">ㅈ</span></div>
+<div>E <span class="yun">ㄸ</span><br /> &nbsp; &nbsp;<span class="yun">ㄷ</span></div>
+<div>R <span class="yun">ㄲ</span><br /> &nbsp; &nbsp;<span class="yun">ㄱ</span></div>
+<div>T <span class="yun">ㅆ</span><br /> &nbsp; &nbsp;<span class="yun">ㅅ</span></div>
+<div>Y &nbsp; &nbsp;<br /> &nbsp; &nbsp;<span class="yun">ㅛ</span></div>
+<div>U &nbsp; &nbsp;<br /> &nbsp; &nbsp;<span class="yun">ㅕ</span></div>
+<div>I &nbsp; &nbsp;<br /> &nbsp; &nbsp;<span class="yun">ㅑ</span></div>
+<div>O <span class="yun">ㅒ</span><br /> &nbsp; &nbsp;<span class="yun">ㅐ</span></div>
+<div>P <span class="yun">ㅖ</span><br /> &nbsp; &nbsp;<span class="yun">ㅔ</span></div>
+</div>
+
+<div style="margin-left:10px;">
+<div>A &nbsp; &nbsp;<br /> &nbsp; &nbsp;<span class="yun">ㅁ</span></div>
+<div>S &nbsp; &nbsp;<br /> &nbsp; &nbsp;<span class="yun">ㄴ</span></div>
+<div>D &nbsp; &nbsp;<br /> &nbsp; &nbsp;<span class="yun">ㅇ</span></div>
+<div>F &nbsp; &nbsp;<br /> &nbsp; &nbsp;<span class="yun">ㄹ</span></div>
+<div>G &nbsp; &nbsp;<br /> &nbsp; &nbsp;<span class="yun">ㅎ</span></div>
+<div>H &nbsp; &nbsp;<br /> &nbsp; &nbsp;<span class="yun">ㅗ</span></div>
+<div>J &nbsp; &nbsp;<br /> &nbsp; &nbsp;<span class="yun">ㅓ</span></div>
+<div>K &nbsp; &nbsp;<br /> &nbsp; &nbsp;<span class="yun">ㅏ</span></div>
+<div>L &nbsp; &nbsp;<br /> &nbsp; &nbsp;<span class="yun">ㅣ</span></div>
+</div>
+
+<div style="margin-left:30px;">
+<div>Z &nbsp; &nbsp;<br /> &nbsp; &nbsp;<span class="yun">ㅋ</span></div>
+<div>X &nbsp; &nbsp;<br /> &nbsp; &nbsp;<span class="yun">ㅌ</span></div>
+<div>C &nbsp; &nbsp;<br /> &nbsp; &nbsp;<span class="yun">ㅊ</span></div>
+<div>V &nbsp; &nbsp;<br /> &nbsp; &nbsp;<span class="yun">ㅍ</span></div>
+<div>B &nbsp; &nbsp;<br /> &nbsp; &nbsp;<span class="yun">ㅠ</span></div>
+<div>N &nbsp; &nbsp;<br /> &nbsp; &nbsp;<span class="yun">ㅜ</span></div>
+<div>M &nbsp; &nbsp;<br /> &nbsp; &nbsp;<span class="yun">ㅡ</span></div>
+</div>
+
+</td></tr>
+</table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,187 @@
+body {
+	color: #333333;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	margin: 10px;
+	background: #F6F6F6;
+}
+
+ul {
+	padding: 5px 0 5px 20px;
+	margin-right: auto;
+	margin-left: auto;
+}
+	
+li {
+	padding: 3px 0 3px 0;
+}
+
+hr {
+	margin-left: 20px;
+	margin-right: 20px;
+	border-bottom:none;
+	border-top-color:rgb(204, 204, 204);
+	height:0px;
+}
+
+#wrapper {
+	padding: 10px;
+	float: left;
+	width: 100%;
+}
+#wrap {
+	height: auto;
+	width: 990px;
+	margin-top: 10px;
+	margin-right: auto;
+	margin-left: auto;
+	background: #FFFFFF;
+}
+
+#logo {
+	padding: 4px 4px 4px 4px;
+	height:100px;
+}
+
+#big_inputking {
+	font-size: 32px;
+	font-weight: bold;
+	color: #FF6666;
+}
+
+#input {
+	font-size: 24px;
+	font-weight: bold;
+	color: #3333ff;
+}
+
+#logo_rihgt {
+	float: left;
+	width: 100%;
+}
+
+.bar {
+	background: #6666FF;
+	text-align: center;
+	margin: 4px 0 4px 0;
+	color: white;
+	font-size: 16px;
+}
+
+a {
+	text-decoration:none;
+	color:blue;
+}
+a:hover {
+	background-color:#ff3300;
+	color:white;
+}
+
+a.stbutton:hover {
+	color:blue;
+}
+
+.bar a {
+	text-decoration:none;
+	color:white;
+	padding: 0 4px 0 4px;
+	font-size: 16px;
+}
+.bar a:hover {background-color:#ff3300}
+
+#footer {
+	background: #6666FF;
+	color: #FFFFFF;
+	text-align: center;
+	margin: 4px 0 1cm 0;
+}
+
+.error {
+	color: #FF3333;
+}
+
+.center_1 {
+	text-align:center;
+}
+
+.center_2 {
+	margin-left: auto ;
+	margin-right: auto ;
+}
+
+
+p {
+	line-height: 150%;
+}
+
+.text_td {
+	padding: 0 1em 0 1em;
+}
+
+.time_table td, .time_table th {
+	border-left:1px solid;
+	border-bottom:1px solid;
+	padding: 2px 0 2px 0;
+	border-color: rgb(204, 204, 204);
+}
+
+.time_table {
+	border-right:1px solid;
+	border-top:1px solid;
+	border-color: rgb(204, 204, 204);
+}
+
+.key {
+	font-size: large;
+	font-weight: bold;
+	color: #FFFF00;
+}
+.sheng {
+	color: #0000FF;
+}
+.yun {
+	color: #FF0000;
+}
+
+#start_inputking {
+	background-color:#ffff60;
+	border:1px solid #9AAFE5;
+	padding: 3px;
+	color:#0000aa;
+	font-weight: bold;
+}
+
+#start_inputking:hover {
+	background-color:#BBBBFF;
+	color:#000000;
+}
+
+.language_link a, .language_link a:visited {
+	background-color:#6666ff;
+	border:1px solid #0000e0;
+	font-size:16px;
+	padding: 3px;
+	color:#ffffff;
+	font-weight: bold;
+}
+
+.language_link a:hover {
+	background-color:#ff3300;
+}
+
+.keyboard_table td > div > div {
+	border:1px solid #101010;
+	width: 30px;
+	height: 30px;
+	float: left;
+	margin: 1px;
+	padding:2px;
+	font-size:14px;
+}
+.keyboard_table td > div > div > span {
+	font-size:14px;
+}
+.keyboard_table td > div {
+	clear:both;
+}
+
